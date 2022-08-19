@@ -1,0 +1,33 @@
+
+<div  class="row d-flex justify-content-center">
+
+    <input type="text" [(ngModel)]="term"  (keyup)="searchTv(page)" (keyup)="checkInput()"  class="form-control my-4 bg-transparent text-white" placeholder="Search by Name ...">
+    <div *ngFor="let tv of trendingTv |paginate:{
+        itemsPerPage: totalSize,
+        currentPage:page,
+        totalItems:totalPage } " class="col-md-3 my-2 ">
+        <div class="tv">
+
+            <a class="position-relative " [routerLink]="['/details',tv.id,'tv']">
+                <span class=" bg-info p-1 rounded-1 position-absolute  vote  fw-bold  end-0">{{tv.vote_average}}</span>
+                <img [src]="imgPrefix+tv.poster_path" class="w-100" alt="">
+                <h3 class="h6 text-center my-2">{{tv.name}}</h3>
+                <h3 class="h6  text-muted my-2 ">
+                    {{tv.overview|seeMore:7}} 
+                    <button class="btn btn-info p-1   fs-6 see-more ">see more</button>
+                </h3>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<div>
+    <pagination-controls class=" my-pagination text-center  m-5"
+        previousLabel="prev"
+        nextLabel="next"
+        (pageChange)="onTableDataChange($event)"
+    >
+
+    </pagination-controls>
+</div>

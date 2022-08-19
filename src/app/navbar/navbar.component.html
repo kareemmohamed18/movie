@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg  ">
+    <div class="container-fluid">
+      <h2 class="navbar-brand text-light fw-bolder "  >NoXe</h2>
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars fa-xl"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item ">
+            <a *ngIf="isLogin" class="nav-link rounded-3 active" aria-current="page" routerLinkActive="active-link" routerLink="home"  >Home</a>
+          </li>
+          
+          
+        
+          <li class="nav-item">
+            <a *ngIf="isLogin" class="nav-link rounded-3  active" aria-current="page" routerLinkActive="active-link" routerLink="tv"  >Tv Show</a>
+          </li>
+
+          <li class="nav-item">
+            <a *ngIf="isLogin" class="nav-link rounded-3  active" aria-current="page" routerLinkActive="active-link" routerLink="pepole"  >People</a>
+          </li>
+
+          <li class="nav-item">
+            <a *ngIf="isLogin" class="nav-link rounded-3  active" aria-current="page" routerLinkActive="active-link" routerLink="movies"  >Movies</a>
+          </li>
+
+        
+
+        
+        
+          
+
+        </ul>
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            
+                <div class="social-icon d-flex align-items-center ">
+                    <i class=" fab fa-facebook  "></i>
+                    <i class=" fab fa-youtube  "></i>
+                    <i class=" fab fa-spotify  "></i>
+                    <i class=" fab fa-instagram  "></i>
+                </div>
+                <li class="nav-item">
+                    <a *ngIf="!isLogin" class="nav-link rounded-3 active" aria-current="page" routerLinkActive="active-link" routerLink="login"  >Login</a>
+                </li>
+            
+                <li class="nav-item">
+                    <a *ngIf="!isLogin" class="nav-link rounded-3 active" aria-current="page" routerLinkActive="active-link" routerLink="register"  >Register</a>
+                </li>
+            
+                
+                <li class="nav-item">
+                    <a (click)="logOut() " *ngIf="isLogin" class="nav-link rounded-3  active" aria-current="page" routerLink="login"   >LogOut</a>
+                </li>
+            
+  
+          </ul>
+       
+      </div>
+    </div>
+  </nav>

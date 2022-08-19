@@ -1,0 +1,32 @@
+<div  class="row d-flex justify-content-center ">
+    <input type="text" [(ngModel)]="term" (keyup)="searchMovie(page)" (keyup)="checkInput()"  class="form-control my-4 bg-transparent text-white" placeholder="Search by Name ...">
+
+    <div *ngFor="let movie of trendingMovies |paginate:{
+        itemsPerPage: totalSize,
+        currentPage:page,
+        totalItems:totalPage }  " class="col-md-3 my-2 ">
+        <div class="movies">
+            <a class="position-relative  " [routerLink]="['/details',movie.id,'movie']">
+                <span class=" bg-info p-1 rounded-1 position-absolute  vote  fw-bold  end-0">{{movie.vote_average}}</span>
+                <img [src]="imgPrefix+movie.poster_path" class="w-100" alt="">
+                <h3 class="h6 text-center my-2">{{movie.title}}</h3>
+                <h3 class="h6  text-muted my-2 ">
+                    {{movie.overview|seeMore:7}} 
+                    <!-- <i class="fa-solid fa-ellipsis bg-info rounded px-2"></i> -->
+                    <button class="btn btn-info p-1   fs-6 see-more ">see more</button>
+                </h3>
+            </a>
+            
+        </div>
+    </div>
+</div>
+
+<div>
+    <pagination-controls class=" my-pagination text-center  m-5"
+        previousLabel="prev"
+        nextLabel="next"
+        (pageChange)="onTableDataChange($event)"
+    >
+
+    </pagination-controls>
+</div>

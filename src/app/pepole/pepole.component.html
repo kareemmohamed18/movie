@@ -1,0 +1,28 @@
+
+
+<div  class="row d-flex justify-content-center">
+    <input type="text" [(ngModel)]="term" (keyup)="checkInput()"  (keyup)="searchPeople(page)"  class="form-control my-4 bg-transparent text-white" placeholder="Search by Name ...">
+
+    <div *ngFor="let person of trendingPeople|paginate:{
+        itemsPerPage: totalSize,
+        currentPage:page,
+        totalItems:totalPage } " class="col-md-3 my-2 ">
+        <div class="people">
+            <a [routerLink]="['/details',person.id,'person']">
+                <img [src]="person.profile_path" class="w-100 pepole-img" alt="">
+                <h3 class="h6 text-center my-2">{{person.name}}</h3>
+                </a>
+            
+        </div>
+    </div>
+</div>
+
+<div>
+    <pagination-controls class=" my-pagination text-center  m-5"
+        previousLabel="prev"
+        nextLabel="next"
+        (pageChange)="onTableDataChange($event)"
+    >
+
+    </pagination-controls>
+</div>

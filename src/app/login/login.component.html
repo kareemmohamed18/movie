@@ -1,0 +1,28 @@
+<h2 class="text-center py-3 fw-bolder">Login</h2>
+
+<div class="w-75 mx-auto">
+    <!-- <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div> -->
+    <form [formGroup]="loginForm"  (ngSubmit)="submitLoginForm(loginForm)"  >
+        
+        <label for="email">Email:</label>
+        <input formControlName="email" type="email" class=" form-control mb-2">
+        <div *ngIf=" loginForm.get('email')?.errors && loginForm.get('email')?.touched " >
+            <p *ngIf="loginForm.get('email')?.getError('required')" class=" alert alert-danger py-1"> email is requierd</p>
+            <p *ngIf="loginForm.get('email')?.getError('email')" class=" alert alert-danger py-1"> Invalid E-mail Format </p>
+        </div>
+
+        <label for="password">Password:</label>
+        <input formControlName="password" type="password" class=" form-control mb-2">
+        <div *ngIf=" loginForm.get('password')?.errors && loginForm.get('password')?.touched " >
+            <p *ngIf="loginForm.get('password')?.getError('required')" class=" alert alert-danger py-1"> password is requierd</p>
+            <p *ngIf="loginForm.get('password')?.getError('pattern')" class=" alert alert-danger py-1"> password must start with Upper Case </p>
+        </div>
+
+        <button [disabled]="loginForm.invalid" class=" btn btn-info " type="submit">
+            <span *ngIf="isLoading"> <i class=" fas fa-spinner fa-spin  "></i></span>    
+            <span *ngIf="!isLoading">Login</span>    
+        </button>
+
+        
+    </form>
+</div>

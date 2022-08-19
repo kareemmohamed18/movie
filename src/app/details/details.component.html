@@ -1,0 +1,75 @@
+<div class="row py-5">
+    <div class="col-md-4">
+        <img class="w-100" [src]="allDetails.birthday ? imgPrefix+allDetails.profile_path  : imgPrefix+allDetails.poster_path " alt="">
+    </div>
+    <div *ngIf="allDetails.release_date" class="col-md-8 ">
+       <div class="movie-caption p-3 ">
+        <h2>{{allDetails.title}}</h2>
+        <p class="text-muted fs-3 pt-2">{{allDetails.tagline}}</p>
+        <ul class="d-flex list-unstyled  ">
+            <li  *ngFor="let genres of allDetails.genres">{{genres.name}}</li>
+        </ul>
+        <p >Vote : {{allDetails.vote_average}}</p>
+        <p>Vote Count : {{allDetails.vote_count}}</p>
+        <p> Popularity : {{allDetails.popularity}}</p>
+        <p> Release Date : {{allDetails.release_date}}</p>
+        <p *ngIf="flag==false" class="text-muted fs-4">  {{allDetails.overview|seeMore:15}} . . .
+            <button *ngIf="allDetails.overview.length>=20" (click)="seeMore()" class="btn btn-info p-1   fs-6 see-more ">Read More <i class="fa-solid fa-caret-down fa-xl ps-1"></i></button>
+        </p>
+
+        <p *ngIf="flag==true" class="text-muted fs-4">  {{allDetails.overview}} . . .
+            <button  (click)="seeMore()" class="btn btn-info p-1   fs-6 see-more ">Read Less <i class="fa-solid fa-caret-up fa-xl ps-1"></i></button>
+        </p>
+
+       </div>
+    </div>
+
+
+
+    <div *ngIf="allDetails.first_air_date" class="col-md-8 ">
+        <div class="movie-caption p-4 ">
+         <h2>{{allDetails.name}}</h2>
+         <p class="text-muted fs-3 pt-2">{{allDetails.tagline}}</p>
+         <ul class="d-flex list-unstyled  ">
+             <li  *ngFor="let genres of allDetails.genres">{{genres.name}}</li>
+         </ul>
+         <p >Vote : {{allDetails.vote_average}}</p>
+         <p>Vote Count : {{allDetails.vote_count}}</p>
+         <p> Popularity : {{allDetails.popularity}}</p>
+         <p> Release Date : {{allDetails.first_air_date}}</p>
+         <p> Number Of Seasons : {{allDetails.number_of_seasons}}</p>
+         <p *ngIf="flag==false" class="text-muted fs-4">  {{allDetails.overview|seeMore:15}} . . .
+            <button (click)="seeMore()" class="btn btn-info p-1   fs-6 see-more ">Read More <i class="fa-solid fa-caret-down fa-xl ps-1"></i></button>
+        </p>
+
+        <p *ngIf="flag==true" class="text-muted fs-4">  {{allDetails.overview}} . . .
+            <button (click)="seeMore()" class="btn btn-info p-1   fs-6 see-more ">Read Less <i class="fa-solid fa-caret-up fa-xl ps-1"></i></button>
+        </p>
+         
+ 
+        </div>
+     </div>
+
+     
+
+
+    <div *ngIf="allDetails.birthday" class="col-md-8 ">
+        <div class="movie-caption p-4 ">
+         <h2>{{allDetails.name}}</h2>
+         <p class="text-muted fs-3 pt-2">{{allDetails.tagline}}</p>
+         <p> Popularity : {{allDetails.popularity}}</p>
+         <p> Birthday : {{allDetails.birthday}}</p>
+         <p> Place Of Birth : {{allDetails.place_of_birth}}</p>
+         <p *ngIf="flag==false" class="text-muted fs-4">  {{allDetails.biography|seeMore:15}} . . .
+            <button  (click)="seeMore()" class="btn btn-info p-1   fs-6 see-more ">Read More <i class="fa-solid fa-caret-down fa-xl ps-1"></i></button>
+        </p>
+
+        <p *ngIf="flag==true" class="text-muted fs-4">  {{allDetails.biography}} . . .
+            <button  (click)="seeMore()" class="btn btn-info p-1   fs-6 see-more ">Read Less <i class="fa-solid fa-caret-up fa-xl ps-1"></i></button>
+        </p>
+
+ 
+        </div>
+     </div>
+
+</div>
