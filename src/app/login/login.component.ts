@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm:FormGroup=new FormGroup(
     {
       email:new FormControl(null , [Validators.required,Validators.email]),
-      password:new FormControl(null , [Validators.required, Validators.pattern('^[A-Z][a-z]{3,8}')]),
+      password:new FormControl(null , [Validators.required, Validators.pattern(.{8,} ),
     }
   )
   isLoading:boolean=false
