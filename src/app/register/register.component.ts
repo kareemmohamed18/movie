@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
       last_name:new FormControl(null ,[Validators.maxLength(10),Validators.minLength(3),Validators.required]),
       email:new FormControl(null , [Validators.required,Validators.email]),
       age:new FormControl(null ,[Validators.max(70),Validators.min(16),Validators.required]),
-      password:new FormControl(null , [Validators.required, Validators.pattern('^[A-Z][a-z]{3,8}')]),
+      password:new FormControl(null , [Validators.required, Validators.pattern(.{8,} ),
     }
   )
   errorMessage:string=''
